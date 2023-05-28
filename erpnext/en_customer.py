@@ -1,4 +1,4 @@
-from base.customer_base import CustomerBase
+from base import CustomerBase
 
 class ERPNextCustomer(CustomerBase):
     def __init__(self, erpnext_id, *args, **kwargs):

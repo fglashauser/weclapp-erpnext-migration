@@ -1,10 +1,12 @@
-from base.contact_type import ContactType
-from base.gender import Gender
+from .contact_type import ContactType
+from .gender import Gender
+from .doctype_base import DocTypeBase
 
-class Contact:
+class Contact(DocTypeBase):
     def __init__(self, type : ContactType, gender : Gender, first_name : str, \
                 last_name : str, phone : str, mobile : str, email : str, \
                 position : str):
+        super.__init__()
         self.type       = type
         self.gender     = gender
         self.first_name = first_name

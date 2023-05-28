@@ -49,19 +49,20 @@ class ERPNextAPI:
         Returns:
             str: Name of child data
         """
-        child_url = f"{self.base_url}{child_data.doctype}/{child_data.name}"
+        doctype_url = f"{self.base_url}{child_data.doctype}"
+        child_url = f"{doctype_url}/{child_data.name}"
         try:
             response = self._request(child_url, "GET")
         except ERPNextAPIError as e:
             if e.status_code == 404:  # Not found, create new
-                response = self._request(child_url, "POST", child_data)
+                response = self._request(doctype_url, "POST", child_data)
             else:
                 raise e
         else:
             if child_data.update_existing:
                 response = self._request(child_url, "PUT", child_data)
 
-        return response['data']['name']
+        return response["data"]["name"]
 
     def _process_data(self, data: dict) -> dict:
         """Process data
@@ -97,8 +98,11 @@ class ERPNextAPI:
             data = self._process_data(data)
 
         try:
-            response = self.session.request(
-                method=method, url=url, json=data
+            #response = self.session.request(
+            #    method=method, url=url, json=data
+            #)
+            response = requests.request(
+                method=method, url=url, json=data, auth=self.session.auth, headers=self.session.headers
             )
             response.raise_for_status()
         except RequestException as e:
@@ -141,24 +145,6 @@ class ERPNextAPI:
             }]
         }
         return self._request(url, "PUT", data)
-
-    #def _create_link
-    # TODO: Recursively create child-tables of entity   
-    # def _request(self, url : str, method : str, data : ERPNextAPIData = None) -> dict:
-        
-    #     try:
-    #         response = requests.request(
-    #             method=method, url=url, json=data, auth=self.auth, headers=self.headers
-    #         )
-    #         response.raise_for_status()
-    #         return response.json()
-    #     except RequestException as e:
-    #         raise ERPNextAPIError(
-    #             f"Error in {method} request to {url}: {response.text}",
-    #             method,
-    #             url,
-    #             response.text,
-    #         ) from e
         
     def get_all(self) -> dict:
         """Get all entities of the DocType

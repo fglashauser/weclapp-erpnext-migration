@@ -187,7 +187,7 @@ class WcEnCustomerMigration:
         # Create link
         try:
             link_response = self.en_cust_api.create_link(en.ERPNextDocTypes.CUSTOMER, customer_response["data"]["name"], \
-                                                         en.ERPNextDocTypes.ADDRESS, customer_primary_address_name)
+                                                         en.ERPNextDocTypes.ADDRESS, customer_response["data"]["customer_primary_address"])
         except Exception as e:
             print(e)
             return

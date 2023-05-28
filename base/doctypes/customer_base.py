@@ -1,14 +1,16 @@
-from base.customer_type import CustomerType
-from base.address import Address
-from base.contact import Contact
-from base.bank_account import BankAccount
-from base.sepa_mandate import SepaMandate
+from .customer_type import CustomerType
+from .address import Address
+from .contact import Contact
+from .bank_account import BankAccount
+from .sepa_mandate import SepaMandate
+from .doctype_base import DocTypeBase
 
-class CustomerBase:
+class CustomerBase(DocTypeBase):
     # Kunden-Klasse für Migrationen und andere Aufgaben
     def __init__(self, cust_nr : str, type : CustomerType, name : str, \
                 name_addition : str, phone : str, mobile : str, email : str, \
                 website : str, vat_id : str, eori_id : str):
+        super.__init__()
         self.cust_nr        = cust_nr
         self.type           = type
         self.name           = name

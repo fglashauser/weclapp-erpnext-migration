@@ -1,11 +1,13 @@
-from base.bank_account import BankAccount
-from base.sepa_mandate_frequency import SepaMandateFrequency
-from base.sepa_mandate_type import SepaMandateType
+from .bank_account import BankAccount
+from .sepa_mandate_frequency import SepaMandateFrequency
+from .sepa_mandate_type import SepaMandateType
 from datetime import date
+from .doctype_base import DocTypeBase
 
-class SepaMandate:
+class SepaMandate(DocTypeBase):
     def __init__(self, reference : str, name : str, frequency : SepaMandateFrequency, \
                  type : SepaMandateType, signature_date : date, bank_account : BankAccount):
+        super.__init__()
         self.reference      = reference
         self.name           = name
         self.frequency      = frequency

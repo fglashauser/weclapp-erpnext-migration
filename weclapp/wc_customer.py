@@ -1,4 +1,4 @@
-from base.customer_base import CustomerBase
+from base import CustomerBase
 
 class WeclappCustomer(CustomerBase):
     def __init__(self, weclapp_id, *args, **kwargs):
