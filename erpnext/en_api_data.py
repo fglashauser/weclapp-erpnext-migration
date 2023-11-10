@@ -1,11 +1,11 @@
-class ERPNextAPIData(dict):
+class ERPNextAPIChild(dict):
     """Class to represent the data of a new enitity for a DocType in ERPNext.
     Used for creating or updating a child of a DocType with one step in a single API call.
 
     Args:
         dict (_type_): Inherits from dict to be able to store the data of the entity
     """
-    def __init__(self, doctype : str, name : str, update_existing : bool = False, data : dict = None):
+    def __init__(self, doctype : str, data : dict, name : str = None, update_existing : bool = False):
         """Creates a new instance of a ERPNext API-Data-Object
         
         Args:

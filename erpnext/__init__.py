@@ -1,6 +1,6 @@
 from .en_backup import ERPNextBackup
-from .en_customer import ERPNextCustomer
-from .en_api import ERPNextAPI, ERPNextAPIError
-from .en_doctypes import ERPNextDocTypes
+from .en_api import ERPNextAPI, ERPNextFilter, FilterOperator
+from .en_doctypes import ERPNextDocType
 from .en_helper import ERPNextHelper
-from .en_api_data import ERPNextAPIData
+from .en_api_data import ERPNextAPIChild
+from .en_tax_info import TaxInfo

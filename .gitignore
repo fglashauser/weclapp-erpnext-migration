@@ -1,0 +1,3 @@
+config.py
+weclapp/cache/*.json
+weclapp/cache/documents/*
